@@ -1,0 +1,14 @@
+  <div class='right btn btn-primary'>
+    <%= link_to "<< List", cocktails_path %>
+  </div>
+</div>
+
+<div class="content">
+  <div class="form-group">
+    <%= simple_form_for @cocktail do |f| %>
+      <%= f.label :name %>
+      <%= f.input :name, class: 'form-control'%>
+  </div>
+    <%= f.submit class: 'btn btn-success'%>
+  <% end %>
+</div>

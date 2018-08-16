@@ -1,0 +1,18 @@
+<div class="sticky">
+  <div class="header" id="myHeader">
+    <div class="title">
+      <h1>Glouglou</h1>
+    </div>
+    <div class="right btn btn-primary">
+      <%= link_to "Create", new_cocktail_path(@cocktail) %>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <% @cocktails.each do |cocktail| %>
+    <div class="item">
+      <h4><%= link_to cocktail.name, cocktail_path(cocktail) %></h4>
+    </div>
+  <%end%>
+</div>

@@ -1,0 +1,30 @@
+<div class="header">
+  <h1><%= @cocktail.name %></h1>
+  <div class='right btn btn-primary'>
+    <%= link_to "<< List", cocktails_path %>
+  </div>
+</div>
+
+<div class="content">
+  <br/>
+  <h5>Ingredients:</h5>
+  <ul>
+    <% @cocktail.doses.each do |dose| %>
+    <li><strong><%= dose.description %></strong> <%= dose.ingredient.name %></li>
+    <% end %>
+  </ul>
+  <div class="item">
+    <h5>Add an ingredient</h5>
+    <%= render 'cocktails/dose_form', dose: @dose %>
+  </div>
+
+
+  <div class='btn btn-success'>
+    <%= link_to "Edit", edit_cocktail_path %>
+  </div>
+  <div class='btn btn-danger'>
+    <%= link_to "Delete", cocktail_path(@cocktail.id),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+  </div>
+</div>
