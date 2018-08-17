@@ -20,10 +20,14 @@ class DosesController < ApplicationController
 
   # read
   def index
-    @dose = dose.all
+    @dose = Dose.find(params[:id])
+    @doses = Dose.all
   end
 
   def show
+    @cocktail = Cocktail.find(params[:cocktail_id])
+    @dose = Dose.find(params[:id])
+    @dose.cocktail = @cocktail
   end
 
   # update
@@ -34,9 +38,9 @@ class DosesController < ApplicationController
   end
   # delete
   def destroy
-    @dose = Dose.find(params[:id])
-    @dose.cocktail = Cocktail.find(params[:cocktail_id])
-    @dose.destroy
-    redirect_to cocktail_path(@cocktail)
+    @cocktail = Cocktail.find(params[:cocktail_id])
+    # @dose.cocktail = @cocktail
+    @cocktail.doses[dose].destroy
+    redirect_to cocktail_path(@dose.cocktail_id)
   end
 end
