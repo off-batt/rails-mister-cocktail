@@ -11,7 +11,7 @@
   <ul>
     <% @cocktail.doses.each do |dose| %>
     <li><div class='btn btn-danger'>
-    <%= link_to "-", cocktail_dose_path(@cocktail, @dose),
+    <%= link_to "-", cocktail_dose_path(@cocktail, dose),
           method: :delete,
           data: { confirm: "Are you sure?" } %>
   </div><strong><%= dose.description %></strong> <%= dose.ingredient.name %>
